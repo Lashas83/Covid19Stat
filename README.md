@@ -1,8 +1,8 @@
-﻿# Covid19Sta
-## Vakcinacijos lygio įmonėse su atlyginimo vidurkio palyginimas
+﻿# COVID19 Statistika
+## Imunizacijos lygio įmonėse su atlyginimo vidurkio palyginimas
 
 Importuoti šie duomenų rinkiniai naudojant Import Flat File funkciją į [MS SQL server](https://www.microsoft.com/en-us/sql-server/sql-server-2019) duomenų bazę:
-* Atlyginimų vidurkiai iš Sodros teikiamų duomenų mėnesiniai duomenys https://atvira.sodra.lt/imones/rinkiniai/index.html 
+* Atlyginimų vidurkiai iš Sodros teikiamų duomenų mėnesiniai duomenų https://atvira.sodra.lt/imones/rinkiniai/index.html 
 * Asmenų imunizacijos duomenys pagal darbovietes (https://open-data-ls-osp-sdg.hub.arcgis.com/datasets/db8480e783ed46538ba51fc9b380c809_0/about) 2021-07-24 dienos
 
 Importuota buvo į tokias lenteles:
@@ -64,7 +64,7 @@ FROM [dbo].[monthly-2021]
 WHERE LEN(Juridinių_asmenų_registro_kodas_jarCode) > 0
 ```
 
-Ir tada paleistas ši užklausa:
+Ir tada paleista ši užklausa:
 ```sql
 WITH WageStats AS 
 (SELECT DISTINCT immunised_percent AS [Imunizacijos procentas]
@@ -91,7 +91,7 @@ FROM WageStats WS
 Rezultate gauname tokius rezultatus:
 ![Altyginimų vidurkiai pagal pasiskiepijamo procentą įmonėse](/img/stats20210724.png "Altyginimų vidurkiai pagal pasiskiepijamo procentą įmonėse")
 
-Taip pat galime pasižiūrėti statistika be Vilniaus, panaudojus šią užklausą:
+Taip pat galime pasižiūrėti statistiką be Vilniaus, panaudojus šią užklausą:
 
 ```sql
 WITH WageStats AS 
@@ -115,7 +115,7 @@ SELECT
 FROM WageStats WS
 	ORDER BY WS.[Imunizacijos procentas] DESC
 ```
-![Altyginimų vidurkiai pagal pasiskiepijamo procentą įmonėse (be Vilniaus m. sav.)](/img/stats20210724-excludingVilnius.png "Altyginimų vidurkiai pagal pasiskiepijamo procentą įmonėse (be Vilniaus m. sav.)")
+![Altyginimų vidurkiai pagal imunizacijos procentą įmonėse (be Vilniaus m. sav.)](/img/stats20210724-excludingVilnius.png "Altyginimų vidurkiai pagal imunizacijos procentą įmonėse (be Vilniaus m. sav.)")
 
 ---
 Panaudoti įrankiai:
